@@ -1,0 +1,39 @@
+{
+  "name": "Artifact Keeper",
+  "dockerComposeFile": [
+    "../docker-compose.local-dev.yml",
+    "docker-compose.devcontainer.yml"
+  ],
+  "service": "backend",
+  "workspaceFolder": "/app",
+  "remoteUser": "appuser",
+  "customizations": {
+    "vscode": {
+      "extensions": [
+        "rust-lang.rust-analyzer",
+        "vadimcn.vscode-lldb",
+        "serayuzgur.crates",
+        "tamasfe.even-better-toml",
+        "usernamehw.errorlens"
+      ],
+      "settings": {
+        "rust-analyzer.checkOnSave.command": "clippy",
+        "rust-analyzer.cargo.buildScripts.enable": true,
+        "editor.formatOnSave": true,
+        "[rust]": {
+          "editor.defaultFormatter": "rust-lang.rust-analyzer"
+        }
+      }
+    }
+  },
+  "forwardPorts": [8080, 9090, 3000, 30432, 9200, 16686],
+  "portsAttributes": {
+    "8080": { "label": "Backend API" },
+    "9090": { "label": "Backend gRPC" },
+    "3000": { "label": "Web UI" },
+    "30432": { "label": "PostgreSQL" },
+    "9200": { "label": "OpenSearch" },
+    "16686": { "label": "Jaeger UI" }
+  },
+  "postCreateCommand": "cargo fetch"
+}

@@ -1,0 +1,6 @@
+# Devcontainer-only Dockerfile for the web service.
+#
+# The web frontend lives in a separate repository (artifact-keeper-web), so
+# when opening this repo in a devcontainer we use the pre-built image from
+# GHCR instead of building from source.
+FROM ghcr.io/artifact-keeper/artifact-keeper-web:latest
